@@ -4,7 +4,7 @@ import { todayDate, createQueryLine } from './utils.js'
 
 var date = todayDate()
 
-const xlsxToSql = async (table_name, argv, id_lang) => {
+const xlsxToSql = (table_name, argv, id_lang) => {
   const writeStream = fs.createWriteStream(`${table_name}_${date}.sql`)
   const file = xlsx.readFile(argv.filename)
   const sheets = file.SheetNames

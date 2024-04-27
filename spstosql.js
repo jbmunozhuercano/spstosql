@@ -7,9 +7,9 @@ const table_name = argv.tablename
 const id_lang = 1
 
 if (extension == 'xlsx') {
-  await xlsxToSql(table_name, argv, id_lang)
+  xlsxToSql(table_name, argv, id_lang)
 } else if (extension == 'csv') {
-  await csvToSql(table_name, argv, id_lang)
+  csvToSql(table_name, argv, id_lang)
 } else {
   console.error(`¡La extensión de archivo ${extension} no es válida!`)
 }
