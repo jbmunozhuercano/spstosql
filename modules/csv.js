@@ -4,7 +4,7 @@ import { todayDate, createQueryLine } from './utils.js'
 
 var date = todayDate()
 
-const csvToSql = (table_name, argv, id_lang) => {
+const csvToSql = (table_name, argv, id_lang, id_shop) => {
   const writeStream = fs.createWriteStream(`${table_name}_${date}.sql`)
   const delimeter = ','
 
@@ -17,7 +17,13 @@ const csvToSql = (table_name, argv, id_lang) => {
       })
     )
     .on('data', (line) => {
-      const csvLine = createQueryLine(table_name, line, argv.id, id_lang)
+      const csvLine = createQueryLine(
+        table_name,
+        line,
+        argv.id,
+        id_lang,
+        id_shop
+      )
       //console.log(csvLine + '\r');
       writeStream.write(csvLine)
     })

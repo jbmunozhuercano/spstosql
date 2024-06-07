@@ -4,7 +4,7 @@ import { todayDate, createQueryLine } from './utils.js'
 
 var date = todayDate()
 
-const xlsxToSql = (table_name, argv, id_lang) => {
+const xlsxToSql = (table_name, argv, id_lang, id_shop) => {
   const writeStream = fs.createWriteStream(`${table_name}_${date}.sql`)
   const file = xlsx.readFile(argv.filename)
   const sheets = file.SheetNames
@@ -16,7 +16,13 @@ const xlsxToSql = (table_name, argv, id_lang) => {
     })
 
     temp.forEach((line) => {
-      const csvLine = createQueryLine(table_name, line, argv.id, id_lang)
+      const csvLine = createQueryLine(
+        table_name,
+        line,
+        argv.id,
+        id_lang,
+        id_shop
+      )
       //console.log(csvLine + '\r');
       writeStream.write(csvLine)
     })

@@ -24,11 +24,11 @@ const concatZeros = (...elements) => {
 
 export { todayDate }
 
-const createQueryLine = (table_name, line, id, id_lang) => {
+const createQueryLine = (table_name, line, id, id_lang, id_shop) => {
   const metaTitle = line['meta_title'].replaceAll('"', "'")
   const metaDescription = line['meta_description'].replaceAll('"', "'")
 
-  return `UPDATE ${table_name} SET meta_title = "${metaTitle}", meta_description = "${metaDescription}" WHERE ${id} = ${line['id']} AND id_lang = ${id_lang};\n`
+  return `UPDATE ${table_name} SET meta_title = "${metaTitle}", meta_description = "${metaDescription}" WHERE ${id} = ${line['id']} AND id_lang = ${id_lang} AND id_shop = ${id_shop};\n`
 }
 
 export { createQueryLine }
